@@ -36,6 +36,7 @@ sudo -u postgres psql -c "CREATE ROLE sonar WITH LOGIN PASSWORD '$SONAR_DB_PWD';
 sudo -u postgres psql -c "CREATE DATABASE sonar WITH OWNER sonar;"
 
 # update sonar.properties
+echo "" | sudo tee -a /opt/sonarqube/conf/sonar.properties # insert a blank line
 echo "sonar.jdbc.url=jdbc:postgresql://localhost/sonar" | sudo tee -a /opt/sonarqube/conf/sonar.properties
 echo "sonar.jdbc.username=sonar" | sudo tee -a /opt/sonarqube/conf/sonar.properties
 echo "sonar.jdbc.password=$SONAR_DB_PWD" | sudo tee -a /opt/sonarqube/conf/sonar.properties
