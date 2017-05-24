@@ -1,0 +1,31 @@
+{
+  "variables": {
+    "aws_access_key": "",
+    "aws_secret_key": "",
+    "aws_vpc_id": "",
+    "aws_subnet_id": ""
+  },
+  "builders": [{
+    "type": "amazon-ebs",
+    "access_key": "{{user `aws_access_key`}}",
+    "secret_key": "{{user `aws_secret_key`}}",
+    "region": "us-east-1",
+    "source_ami": "ami-b14ba7a7",
+    "instance_type": "t2.medium",
+    "ssh_username": "admin",
+    "vpc_id": "{{user `aws_vpc_id`}}",
+    "subnet_id": "{{user `aws_subnet_id`}}",
+    "ami_name": "jenkins-{{timestamp}}",
+    "associate_public_ip_address": "true",
+    "ami_virtualization_type": "hvm",
+    "tags": {"Environment": "test",
+             "name": "packer.io test"}
+  }],
+  "provisioners": [{
+    "type": "shell",
+    "scripts": [
+      "scripts/set_sources.sh",
+      "scripts/update.sh"
+    ]
+  }]
+}
