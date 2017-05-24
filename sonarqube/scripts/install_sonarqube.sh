@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # add jessie-backports
-echo "deb http://http.debian.net/debian jessie-backports" | sudo tee -a /etc/apt/sources.list.d/jessie-backports.list
+echo "deb http://http.debian.net/debian main jessie-backports" | sudo tee -a /etc/apt/sources.list.d/jessie-backports.list
 sudo apt-get update
 
 # install required libraries
@@ -58,6 +58,7 @@ User=sonarqube
 
 [Install]
 WantedBy=multi-user.target
+EOF
 
 sudo systemctl daemon-reload
 sudo systemctl start sonarqube.service
