@@ -1,6 +1,9 @@
+# add jessie-backports
+echo "deb http://http.debian.net/debian jessie-backports" | sudo tee -a /etc/apt/sources.list.d/jessie-backports.list
+sudo apt-get update
+
 # install required libraries
-sudo apt -y install \
-    openjdk-8-jdk-headless \
+sudo apt-get install -y \
     apt-transport-https \
     ca-certificates \
     curl \
@@ -9,6 +12,10 @@ sudo apt -y install \
     postgresql-client \
     libpostgresql-jdbc-java \
     unzip
+
+sudo apt-get install -y -t jessie-backports \ 
+    openjdk-8-jre-headless \
+    openjdk-8-jdk-headless
 
 # download sonarqube and place files under /opt/sonarqube
 wget https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-6.3.1.zip
