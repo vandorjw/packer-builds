@@ -1,7 +1,7 @@
 #!/bin/bash
 sudo apt update
 # install curl to fix broken wget while retrieving content from secured sites
-sudo apt -y upgrade
 sudo apt -y install curl
 sudo apt -y install jenkins
 sudo apt -y install nginx-full
+sudo apt -y upgrade
