@@ -24,10 +24,10 @@ server {
       proxy_set_header        X-Forwarded-Proto \$scheme;
 
       # Fix the "It appears that your reverse proxy set up is broken" error.
-      proxy_pass          http://127.0.0.1:6000;
+      proxy_pass          http://127.0.0.1:9000;
       proxy_read_timeout  90;
 
-      proxy_redirect      http://127.0.0.1:6000 https://\$host:\$server_port;
+      proxy_redirect      http://127.0.0.1:9000 https://\$host:\$server_port;
 
       # Required for new HTTP-based CLI
       proxy_http_version 1.1;
