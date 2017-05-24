@@ -15,9 +15,7 @@ sudo apt-get install -y \
     libpostgresql-jdbc-java \
     unzip
 
-sudo apt-get install -y -t jessie-backports \ 
-    openjdk-8-jre-headless \
-    openjdk-8-jdk-headless
+sudo apt-get install -y -t jessie-backports openjdk-8-jre-headless openjdk-8-jdk-headless
 
 # download sonarqube and place files under /opt/sonarqube
 wget https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-6.3.1.zip
@@ -27,7 +25,7 @@ sudo cp -r sonarqube-6.3.1/* /opt/sonarqube/
 rm -r ./sonarqube-6.3.1
 
 # create system user which will run sonarqube
-sudo useradd -r -s /bin/false sonarqube -b /opt/sonarqube
+sudo useradd -r -s /bin/bash -d /opt/sonarqube sonarqube
 sudo chown -R sonarqube:sonarqube /opt/sonarqube
 
 # Generate a random password
@@ -63,6 +61,4 @@ EOF
 sudo systemctl daemon-reload
 sudo systemctl start sonarqube.service
 sudo systemctl enable sonarqube.service 
-
-
 
